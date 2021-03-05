@@ -1,7 +1,7 @@
 'use strict';
 
-import mongoose from 'mongoose'
-import categoryData from '../../InitData/category'
+import mongoose from 'mongoose';
+import categoryData from '../../InitData/category';
 
 const Schema = mongoose.Schema;
 
@@ -19,33 +19,33 @@ const categorySchema = new Schema({
 			image_url: String,
 			level: Number,
 			name: String
-		},
+		}
 	]
 });
 
-categorySchema.statics.addCategory = async function (type){
+categorySchema.statics.addCategory = async function (type) {
 	const categoryName = type.split('/');
-	try{
+	try {
 		const allcate = await this.findOne();
 		const subcate = await this.findOne({name: categoryName[0]});
-		allcate.count ++;
-		subcate.count ++ ;
-		subcate.sub_categories.map(item => {
+		allcate.count++;
+		subcate.count++;
+		subcate.sub_categories.map((item) => {
 			if (item.name == categoryName[1]) {
-				return item.count ++ 
+				return item.count++;
 			}
-		})
+		});
 		await allcate.save();
 		await subcate.save();
 		console.log('保存cetegroy成功');
-		return
-	}catch(err){
+		return;
+	} catch (err) {
 		console.log('保存cetegroy失败');
-		throw new Error(err)
+		throw new Error(err);
 	}
-}
+};
 
-const Category = mongoose.model('Category', categorySchema)
+const Category = mongoose.model('Category', categorySchema);
 
 Category.findOne((err, data) => {
 	if (!data) {
@@ -53,6 +53,6 @@ Category.findOne((err, data) => {
 			Category.create(categoryData[i]);
 		}
 	}
-})
+});
 
-export default Category
+export default Category;

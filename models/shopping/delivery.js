@@ -1,7 +1,7 @@
 'use strict';
 
-import mongoose from 'mongoose'
-import deliveryData from '../../InitData/delivery'
+import mongoose from 'mongoose';
+import deliveryData from '../../InitData/delivery';
 
 const Schema = mongoose.Schema;
 
@@ -10,7 +10,7 @@ const DeliverySchema = new Schema({
 	id: Number,
 	is_solid: Boolean,
 	text: String
-})
+});
 
 DeliverySchema.index({id: 1});
 
@@ -20,6 +20,6 @@ Delivery.findOne((err, data) => {
 	if (!data) {
 		Delivery.create(deliveryData);
 	}
-})
+});
 
-export default Delivery
+export default Delivery;

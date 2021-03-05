@@ -1,6 +1,6 @@
 'use strict';
 
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
@@ -11,14 +11,14 @@ const orderSchema = new Schema({
 				category_id: Number,
 				name: {type: String, default: ''},
 				price: {type: Number, default: 0},
-				quantity: {type: Number, default: 0},
+				quantity: {type: Number, default: 0}
 			}
 		],
 		deliver_fee: {
 			category_id: {type: Number, default: 2},
 			name: {type: String, default: '配送费'},
 			price: {type: Number, default: 4},
-			quantity: {type: Number, default: 1},
+			quantity: {type: Number, default: 1}
 		},
 		extra: [],
 		group: [
@@ -66,7 +66,7 @@ const orderSchema = new Schema({
 		color: String,
 		image_type: String,
 		sub_title: String,
-		title: String,
+		title: String
 	},
 	status_code: {type: Number, default: 0},
 	timeline_node: {
@@ -74,18 +74,18 @@ const orderSchema = new Schema({
 		description: String,
 		in_processing: {type: Number, default: 0},
 		sub_description: String,
-		title: String,
+		title: String
 	},
 	top_show: {type: Number, default: 0},
 	total_amount: Number,
 	total_quantity: Number,
 	unique_id: Number,
 	user_id: Number,
-	address_id: Number,
-})
+	address_id: Number
+});
 
 orderSchema.index({id: 1});
 
 const Order = mongoose.model('Order', orderSchema);
 
-export default Order
+export default Order;

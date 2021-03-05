@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-import mongoose from 'mongoose'
-import hongbaoData from '../../InitData/hongbao'
+import mongoose from 'mongoose';
+import hongbaoData from '../../InitData/hongbao';
 
 const Schema = mongoose.Schema;
 
@@ -25,8 +25,8 @@ const hongbaoSchema = new Schema({
 	limit_map: {},
 	status: Number,
 	present_status: Number,
-	share_status: Number,
-})
+	share_status: Number
+});
 
 hongbaoSchema.index({id: 1});
 
@@ -34,10 +34,10 @@ const Hongbao = mongoose.model('Hongbao', hongbaoSchema);
 
 Hongbao.findOne((err, data) => {
 	if (!data) {
-		hongbaoData.forEach(item => {
-			Hongbao.create(item)
-		})
+		hongbaoData.forEach((item) => {
+			Hongbao.create(item);
+		});
 	}
-})
+});
 
-export default  Hongbao
+export default Hongbao;
